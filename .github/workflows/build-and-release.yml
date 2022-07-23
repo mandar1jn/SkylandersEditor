@@ -53,6 +53,12 @@ jobs:
         run: |
           cd build
           nmake ${{ matrix.configuration }}
+
+      - name: Build (linux)
+        if: runner.os == 'Linux'
+        run: |
+          cd build
+          make ${{ matrix.configuration }}
           
       - name: Copy binary
         run: |
