@@ -63,7 +63,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          ${{ MAKE }} ${{ matrix.configuration }}
+          $MAKE ${{ matrix.configuration }}
           
       - name: Copy binary
         run: |
