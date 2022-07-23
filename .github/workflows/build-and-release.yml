@@ -69,6 +69,8 @@ jobs:
       - name: Copy binary
         run: |
           mkdir output
+          cd ./build/debug
+          dir
           cp ./build/${{ matrix.configuration }}/SkylandersEditor* ./output/
           
       - name: Deploy (windows)
