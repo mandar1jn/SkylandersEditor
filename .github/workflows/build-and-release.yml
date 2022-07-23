@@ -73,7 +73,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: SkylandersEditor-${{ matrix.platform }}-${{ matrix.configuration }}
+          name: SkylandersEditor-${{ runner.os }}-${{ matrix.configuration }}
           path: ./output/*
           
   Upload:
