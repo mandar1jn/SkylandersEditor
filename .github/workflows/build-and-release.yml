@@ -69,7 +69,7 @@ jobs:
       - name: Copy binary
         run: |
           mkdir output
-          cp build/${{ matrix.configuration }}/SkylandersEditor* ./output/
+          cp ./build/${{ matrix.configuration }}/SkylandersEditor* ./output/
           
       - name: Deploy (windows)
         if: runner.os == 'Windows'
@@ -93,9 +93,6 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           path: ./artifacts/
-      - name: Install node dependency
-        run: |
-          npm install --location=global archiver
       - name: Zip files
         uses: actions/github-script@v6.1.0
         with:
