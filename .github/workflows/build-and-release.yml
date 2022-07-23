@@ -42,12 +42,12 @@ jobs:
         uses: egor-tensin/vs-shell@v2
         
       - name: Set ENV variables windows
-        if: matrix.platform == "windows"
+        if: runner.os == 'windows'
         run: |
           echo "MAKE=nmake" >> $GITHUB_ENV
           
       - name: Set ENV variables linux
-        if: matrix.platform == "ubuntu"
+        if: runner.os == 'Ubuntu'
         run: |
           echo "MAKE=make" >> $GITHUB_ENV
           
