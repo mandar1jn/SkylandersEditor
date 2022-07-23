@@ -69,7 +69,7 @@ jobs:
       - name: Copy binary
         run: |
           mkdir output
-          cp build/${{ matrix.configuration }}/SkylandersEditor** ./output/
+          cp build/${{ matrix.configuration }}/SkylandersEditor* ./output/
           
       - name: Deploy (windows)
         if: runner.os == 'Windows'
