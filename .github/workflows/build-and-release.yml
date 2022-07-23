@@ -52,13 +52,13 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           cd build
-          cat Makefile
           nmake ${{ matrix.configuration }}
 
       - name: Build (linux)
         if: runner.os == 'Linux'
         run: |
           cd build
+          cat Makefile
           make ${{ matrix.configuration }}
           
       - name: Copy binary
