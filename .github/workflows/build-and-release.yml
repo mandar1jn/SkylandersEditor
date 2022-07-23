@@ -40,18 +40,6 @@ jobs:
       - name: Set up Visual Studio shell
         if: runner.os == 'Windows'
         uses: egor-tensin/vs-shell@v2
-        
-      - name: Set ENV variables windows
-        if: runner.os == 'Windows'
-        uses: allenevans/set-env@2.0.0
-        with:
-          MAKE: 'nmake'
-          
-      - name: Set ENV variables linux
-        if: runner.os == 'Linux'
-        uses: allenevans/set-env@2.0.0
-        with:
-          MAKE: 'make'
           
       - name: Generate Makefiles
         run: |
@@ -60,18 +48,19 @@ jobs:
           qmake ../SkylandersEditor.pro
           dir
           
-      - name: Build
+      - name: Build (windows)
+        if: runner.os == 'Windows'
         run: |
           cd build
-          $MAKE ${{ matrix.configuration }}
+          nmake ${{ matrix.configuration }}
           
       - name: Copy binary
         run: |
           mkdir output
           cp build/${{ matrix.configuration }}/SkylandersEditor.exe output/SkylandersEditor.exe
           
-      - name: Deploy
-        if: ${{ runner.os }} == Windows
+      - name: Deploy (windows)
+        if: runner.os == 'Windows'
         run: |
           windeployqt --no-quick-import --no-translations --no-system-d3d-compiler --no-virtualkeyboard --no-compiler-runtime --no-opengl-sw ./output/
           
