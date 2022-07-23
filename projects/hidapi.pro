@@ -9,4 +9,5 @@ unix {
     SOURCES += "./externals/hidapi/libusb/hid.c"
     CONFIG += link_pkgconfig
     PKGCONFIG += libusb
+    INCLUDEPATH += `pkg-config --cflags libusb`
 }
