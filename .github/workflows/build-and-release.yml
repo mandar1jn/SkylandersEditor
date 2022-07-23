@@ -59,7 +59,7 @@ jobs:
         run: |
           cd build
           cat Makefile
-          make ${{ matrix.configuration }}
+          make
           
       - name: Copy binary
         run: |
