@@ -51,7 +51,7 @@ jobs:
           mkdir build
           cd build
           qmake ../SkylandersEditor.pro
-          dir
+          cat Makefile
           
       - name: Build (windows)
         if: runner.os == 'Windows'
