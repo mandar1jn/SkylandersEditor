@@ -45,7 +45,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get install libusb-dev
-          echo `pkg-config --cflags libusb`
+          echo `pkg-config libusb`
           
       - name: Generate Makefiles
         run: |
