@@ -43,13 +43,15 @@ jobs:
         
       - name: Set ENV variables windows
         if: runner.os == 'windows'
-        run: |
-          echo "MAKE=nmake" >> $GITHUB_ENV
+        uses: allenevans/set-env@2.0.0
+        with:
+          MAKE: 'nmake'
           
       - name: Set ENV variables linux
-        if: runner.os == 'Ubuntu'
-        run: |
-          echo "MAKE=make" >> $GITHUB_ENV
+        if: runner.os == 'Linux'
+        uses: allenevans/set-env@2.0.0
+        with:
+          MAKE: 'make'
           
       - name: Generate Makefiles
         run: |
@@ -62,7 +64,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          ${{ env.MAKE }} ${{ matrix.configuration }}
+          ${{ MAKE }} ${{ matrix.configuration }}
           
       - name: Copy binary
         run: |
