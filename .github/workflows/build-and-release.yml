@@ -38,7 +38,18 @@ jobs:
           setup-python: false
           
       - name: Set up Visual Studio shell
+        if: ${{ matrix.os }} == windows
         uses: egor-tensin/vs-shell@v2
+        
+      - name: Set ENV variables windows
+        if: ${{ matrix.os }} == windows
+        run: |
+          echo "MAKE=nmake" >> $GITHUB_ENV
+          
+      - name: Set ENV variables linux
+        if: ${{ matrix.os }} == ubuntu
+        run: |
+          echo "MAKE=make" >> $GITHUB_ENV
           
       - name: Generate Makefiles
         run: |
@@ -50,7 +61,7 @@ jobs:
       - name: Build
         run: |
           cd build
-          nmake ${{ matrix.configuration }}
+          ${{ env.MAKE }} ${{ matrix.configuration }}
           
       - name: Copy binary
         run: |
