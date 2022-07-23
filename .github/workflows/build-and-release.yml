@@ -2,17 +2,17 @@ name: Build and release
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "Linux-support" ]
   workflow_dispatch:
 
 jobs:
   Build:
 
     strategy:
-      fail-fast: true
+      fail-fast: false
     
       matrix:
-        platform: [windows]
+        platform: [windows, ubuntu]
         configuration: [debug, release]
         
     runs-on: ${{ matrix.platform }}-latest
@@ -58,6 +58,7 @@ jobs:
           cp build/${{ matrix.configuration }}/SkylandersEditor.exe output/SkylandersEditor.exe
           
       - name: Deploy
+        if: ${{ matrix.os }} == windows
         run: |
           windeployqt --no-quick-import --no-translations --no-system-d3d-compiler --no-virtualkeyboard --no-compiler-runtime --no-opengl-sw ./output/
           
