@@ -59,7 +59,6 @@ jobs:
           cd build
           qmake ../SkylandersEditor.pro
           dir
-          echo "${{ runner.os == "Windows" }}
           
       - name: Build
         run: |
