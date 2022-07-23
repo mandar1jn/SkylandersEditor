@@ -42,7 +42,7 @@ jobs:
         uses: egor-tensin/vs-shell@v2
         
       - name: Set ENV variables windows
-        if: runner.os == 'windows'
+        if: runner.os == 'Windows'
         uses: allenevans/set-env@2.0.0
         with:
           MAKE: 'nmake'
