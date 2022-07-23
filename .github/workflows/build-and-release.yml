@@ -52,6 +52,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           cd build
+          cat Makefile
           nmake ${{ matrix.configuration }}
 
       - name: Build (linux)
