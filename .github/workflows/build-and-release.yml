@@ -40,6 +40,11 @@ jobs:
       - name: Set up Visual Studio shell
         if: runner.os == 'Windows'
         uses: egor-tensin/vs-shell@v2
+        
+      - name: Install libusb
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install libusb-dev
           
       - name: Generate Makefiles
         run: |
