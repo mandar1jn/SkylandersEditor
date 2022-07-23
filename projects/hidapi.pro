@@ -7,4 +7,6 @@ win32 {
 
 unix {
     SOURCES += "./externals/hidapi/libusb/hid.c"
+    CONFIG += link_pkgconfig
+    PKGCONFIG += libusb
 }
